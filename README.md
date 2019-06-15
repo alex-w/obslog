@@ -20,3 +20,9 @@ The current design of the database necessarily reflects my style of practicing t
 
 The current implementation is done in SQLite because of its simplicity and portability, as the complete database fits within a single file. The code to generate the tables is nevertheless written in standard SQL and can be used in any other relational database system.
 
+# License
+"obslog - an elementary database model for logging astronomical observations" is distributed under the GNU Lesser General Public License (LGPL) version 3 or later. Copies of the The GNU General Public License (GPL) and the GNU Lesser General Public License (LGPL) are distributed along with the sources. Refer to the file LGPLv3.TXT.
+
+Permission to use, copy, modify, and distribute (with no more than a reasonable redistribution fee) this software and its documentation for any purpose is hereby granted, provided that the above copyright notice appear in all copies, that both that copyright notice and this permission notice appear in supporting documentation, and that the name of "obslog - an elementary database model for logging astronomical observations" not be used in advertising or publicity pertaining to distribution of the software without specific, written prior permission. The author makes no representations about the suitability of this software for any purpose. It is provided "as is" without expressed or implied warranty. It is provided with no support and without obligation on the part of the author to assist in its use, correction, modification, or enhancement.
+
+

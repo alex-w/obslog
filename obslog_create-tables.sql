@@ -1,5 +1,7 @@
 -- obslog - an elementary database model for logging astronomical observations
 -- CREATE DATABASE OBSLOG
+-- version 1.3
+-- 2020-06-08
 
 BEGIN;
 
@@ -15,18 +17,18 @@ sessionDateTimeStart text,
 sessionDateTimeEnd text,
 sessionSummerTime integer,
 sessionSeeing integer,
-sessionTransparency integer,
+sessionTransp integer,
 sessionSQM real,
 sessionTempC real,
-sessionRHproc real,
-sessionWindSpeedMS real,
+sessionRHprc real,
+sessionWindSpeMS real,
 sessionWindDirAz real,
-sessionCloudFraction real,
+sessionCloudFrac real,
 sessionCloudType text,
 sessionNotes text,
 FOREIGN KEY (sessionSite) REFERENCES site(siteID),
 FOREIGN KEY (sessionSeeing) REFERENCES codeScale(codeScaleID),
-FOREIGN KEY (sessionTransparency) REFERENCES codeScale(codeScaleID)
+FOREIGN KEY (sessionTransp) REFERENCES codeScale(codeScaleID)
 );
 -- sessionSummerTime is 1 (summer time) or (0) otherwise.
 
@@ -36,14 +38,14 @@ obsID integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 obsSession integer,
 obsDateTimeLocal text,
 obsObject text,
-obsVarStarCompStar1 real,
-obsVarStarCompStar2 real,
-obsVarStarTargetStarEstimate real,
-obsVarStarTargetStarEstimateError real,
-obsVarStarFainterThan integer,
-obsVarStarAAVSOchart text,
-obsVarStarAAVSOcomment text,
-obsVarStarReport integer,
+obsVSComp1 real,
+obsVSComp2 real,
+obsVSMagEst real,
+obsVSMagEstErr real,
+obsVSFainterThan integer,
+obsVSAAVSOchart text,
+obsVSAAVSOcode text,
+codeReport integer,
 obsNotes text,
 obsInstrument text,
 obsMount text,
@@ -51,7 +53,7 @@ obsEyepiece text,
 obsLens text,
 obsFilter text,
 obsAccessory text,
-obsPartOfProject text,
+obsProject text,
 FOREIGN KEY (obsSession) REFERENCES session(sessionID),
 FOREIGN KEY (obsObject) REFERENCES object(objectMyName),
 FOREIGN KEY (obsInstrument) REFERENCES instrument(instrumentID),
@@ -60,9 +62,9 @@ FOREIGN KEY (obsEyepiece) REFERENCES eyepiece(eyepieceID),
 FOREIGN KEY (obsLens) REFERENCES lens(lensID),
 FOREIGN KEY (obsFilter) REFERENCES filter(filterID),
 FOREIGN KEY (obsAccessory) REFERENCES accessory(accessoryID),
-FOREIGN KEY (obsPartOfProject) REFERENCES project(projectName),
-FOREIGN KEY (obsvarstarAAVSOcomment) REFERENCES codeAAVSO(codeAAVSOID),
-FOREIGN KEY (obsVarStarReport) REFERENCES codeVarStarReport(codeVarStarRepID)
+FOREIGN KEY (obsProject) REFERENCES project(projectName),
+FOREIGN KEY (obsVSAAVSOcode) REFERENCES codeAAVSO(codeAAVSOID),
+FOREIGN KEY (codeReport) REFERENCES codeReport(codeReportID)
 );
 
 
@@ -71,18 +73,17 @@ FOREIGN KEY (obsVarStarReport) REFERENCES codeVarStarReport(codeVarStarRepID)
 -- site 
 CREATE TABLE site (
 siteID text NOT NULL PRIMARY KEY,
-siteLongitudeDG real,
-siteLatitudeDG real,
-siteHeightMT real,
+siteLonDG real,
+siteLatDG real,
+siteHghMT real,
 siteTimeZone real,
-siteLightPollutionRegional integer,
-siteLightPollutionLocal text,
+siteSkyQuality integer,
 siteSafety integer,
 siteTranquility integer,
 siteNotes text,
 FOREIGN KEY (siteSafety) REFERENCES codeScale(codeScaleID),
 FOREIGN KEY (siteTranquility) REFERENCES codeScale(codeScaleID),
-FOREIGN KEY (siteLightPollutionRegional) REFERENCES codeBortle(codeBortleID)
+FOREIGN KEY (siteSkyQuality) REFERENCES codeBortle(codeBortleID)
 );
 -- siteLongitudeDG, siteLatitudeDG: referred to WGS84 (GPS)
 -- siteTimeZone: time difference with UT
@@ -197,7 +198,7 @@ objectBayer text,
 objectFlamsteed integer,
 objectHipparcos text,
 objectAAVSO text,
-objectVarStarType text,
+objectVSType text,
 objectMessier integer,
 objectNGC integer,
 objectIC integer,
@@ -248,14 +249,14 @@ codeScaleMeaning text,
 codeScaleNotes text
 );
 
--- variable star report codes
-CREATE TABLE codeVarStarReport (
-codeVarStarRepID text NOT NULL PRIMARY KEY,
-codeVarStarRepMeaning text,
-codeVarStarRepNotes text
+-- report codes
+CREATE TABLE codeReport (
+codeReportID text NOT NULL PRIMARY KEY,
+codeReportMeaning text,
+codeReportNotes text
 );
 
--- codes for obsVarStarReported:
+-- codes for obsVSReported:
 -- 0 not yet reported
 -- 1 reported
 -- 2 not to be reported: not applicable, test obs, wrong, dubious, or any other reason

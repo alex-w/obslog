@@ -22,6 +22,16 @@ I also include complete tables of constellations, reporting codes, Bortle scale 
 
 The current implementation is done in SQLite because of its simplicity and portability. The complete database fits within a single file. The code to generate the tables is written in standard SQL and can be used in any other relational database system.
 
+# Using obslog
+The database (obslog.sqlite) is most easily accessed using a database browser, I prefer sqlitebrowser.
+
+One starts by opening the database and filling necessary details in the auxiliary tables: site, instrument, mount, eyepiece, lens, filter, accesory, object. The auxiliary tables objectType, constellation, codeAAVSO, codeBortle, coseScale and codeReport are already filled in the supplied example, but can be adapted to the user's needs. The planning table project can also be used if necessary.
+
+Once the auxiliary tables are filled as necessary, one can start using the database to log observations. One starts be logging a new entry for a session. A sessionID is automatically generated. One the proceeds to enter additional data: site, date and time for start and end, if summer time was used at the time (1 or 0), seeing and transparency (using codeScale), SQM measurements if available, temperature, humidity, wind, cloudiness and notes. Once the session is created and saved, one can start adding observations made during the session.
+
+For logging observations the table obslog is used. To add an observations just create a new record, an observation identifier is autmatically created. Then fille details as appropriate: obsNotes, obsInstrument (as indicated in instrument table), obsMount text,(idem for mount), obsEyepiece, obsLens, obsFilter, obsAccessory, obsProject (if the observation belongs to a project). The fields obsVSComp1, obsVSComp2, obsVSMagEst, obsVSMagEstErr, obsVSFainterThan, obsVSAAVSOchart, obsVSAAVSOcode, obsReport are used in the context of variable star observation and need not be used.
+
+
 # License
 "obslog - an elementary database model for logging astronomical observations" is distributed under the GNU Lesser General Public License (LGPL) version 3 or later. Copies of the GNU General Public License (GPL) and the GNU Lesser General Public License (LGPL) are distributed along with the sources.
 

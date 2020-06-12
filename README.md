@@ -27,7 +27,7 @@ I also include complete tables of constellations, reporting codes, Bortle scale 
 The current implementation is done in SQLite because of its simplicity and portability. The complete database fits within a single file. The code to generate the tables is written in standard SQL and can be used in any other relational database system.
 
 # Using obslog
-The database (obslog.sqlite) is most easily accessed using a database browser. I prefer sqlitebrowser. It just works like a spreadsheet.
+The database (obslog.sqlite) is most easily accessed using a database browser. I prefer to use sqlitebrowser for this since it just works like a spreadsheet. In prinicple, one could use obslog directly at the eyepiece, entering the records using a computer. This is however not how I use it or the usage I had in mind when designing it. Outside at the eyepiece, I use a mobile device to see the charts, while recording the observations using a voice recorder (dictaphone). After each session, I play back the records and transcribe them to the database. In this way I avoid potential problems with computers, which may be subject to malfunction due to cold and dew. It also allows me to make or remake oral comments freely without fiddling with a keyboard. The voice recorder is small and easily fits in a warm pocket.
 
 One starts by opening the database and filling necessary details in the auxiliary tables: site, instrument, mount, eyepiece, lens, filter, accesory, object. The auxiliary tables objectType, constellation, codeAAVSO, codeBortle, coseScale and codeReport are already filled in the supplied example, but can be adapted to the user's needs. The planning table project can also be used if necessary to describe observing projects to which observations are linked.
 

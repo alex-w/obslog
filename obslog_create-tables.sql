@@ -1,6 +1,6 @@
 -- obslog - an elementary database model for logging astronomical observations
--- version 1.4
--- 2020-06-10
+-- version 1.5
+-- 2021-09-16
 
 -- FOR ALL TABLES
 -- beginLifeSpanDate, endLifeSpanDate: expressed as ISO6801 strings: "YYYY-MM-DD"
@@ -185,7 +185,7 @@ beginLifeSpanNote text,
 endLifeSpanDate text,
 endLifeSpanNote text
 );
--- accessoryTo is a relation, points to ID of instrument,mount, etc.
+-- accessoryTo is a relation, points to ID of instrument,mount, etc.	
 
 
 -- object 
@@ -199,6 +199,7 @@ objectFlamsteed integer,
 objectHipparcos text,
 objectAAVSO text,
 objectVSType text,
+objectVSprog integer,
 objectMessier integer,
 objectNGC integer,
 objectIC integer,

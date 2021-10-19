@@ -3,8 +3,11 @@
 -- 2021-09-16
 
 -- FOR ALL TABLES
--- beginLifeSpanDate, endLifeSpanDate: expressed as ISO6801 strings: "YYYY-MM-DD"
+-- beginLifeSpanDate, endLifeSpanDate: expressed as ISO8601 strings: "YYYY-MM-DD"
 -- beginLifeSpanNote, endLifeSpanNote: references to seller, buyer, etc
+
+-- written by Hernán De Angelis
+-- this software is distributed under the GNU Lesser General Public License (LGPL) version 3 or later.
 
 
 BEGIN;
@@ -214,6 +217,7 @@ FOREIGN KEY (objectConstellation) REFERENCES constellation(constellationID)
 );
 
 
+
 -- objectType 
 CREATE TABLE objectType (
 objectType text NOT NULL PRIMARY KEY,
@@ -232,6 +236,7 @@ INSERT INTO objectType VALUES('OC','Open cluster','https://en.wikipedia.org/wiki
 INSERT INTO objectType VALUES('PL','Planet','https://en.wikipedia.org/wiki/Planet');
 INSERT INTO objectType VALUES('SC','Star cloud','https://en.wikipedia.org/wiki/Star_cluster');
 INSERT INTO objectType VALUES('ST','Star','https://en.wikipedia.org/wiki/Star');
+
 
 
 -- constellation 
@@ -332,6 +337,7 @@ INSERT INTO constellation VALUES('Vol','Volans','Volantis','https://en.wikipedia
 INSERT INTO constellation VALUES('Vul','Vulpecula','Vulpeculae','https://en.wikipedia.org/wiki/Vulpecula',NULL);
 
 
+
 -- AAVSO comment codes
 CREATE TABLE codeAAVSO (
 codeAAVSOID text NOT NULL PRIMARY KEY,
@@ -351,6 +357,7 @@ INSERT INTO codeAAVSO VALUES('Y','Outburst.',NULL);
 INSERT INTO codeAAVSO VALUES('Z','Magnitude of star uncertain.',NULL);
 
 
+
 -- Bortle scale codes for light pollution description
 CREATE TABLE codeBortle (
 codeBortleID integer NOT NULL PRIMARY KEY,
@@ -368,6 +375,7 @@ INSERT INTO codeBortle VALUES(8,'City sky',NULL);
 INSERT INTO codeBortle VALUES(9,'Inner-city sky',NULL);
 
 
+
 -- scale codes for seeing, transparency, site safety and site tranquility
 CREATE TABLE codeScale (
 codeScaleID integer NOT NULL PRIMARY KEY,
@@ -379,6 +387,7 @@ INSERT INTO codeScale VALUES(2,'acceptable',NULL);
 INSERT INTO codeScale VALUES(3,'good',NULL);
 INSERT INTO codeScale VALUES(4,'very good',NULL);
 INSERT INTO codeScale VALUES(5,'excellent',NULL);
+
 
 
 -- report codes

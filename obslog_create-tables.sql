@@ -1,6 +1,6 @@
 -- obslog - an elementary database model for logging astronomical observations
--- version 1.5
--- 2021-09-16
+-- version 1.6
+-- 2021-11-02
 
 -- FOR ALL TABLES
 -- beginLifeSpanDate, endLifeSpanDate: expressed as ISO8601 strings: "YYYY-MM-DD"

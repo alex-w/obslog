@@ -212,30 +212,30 @@ objectOtherCatalogName text,
 objectOtherCatalogDsgn text,
 objectLink text,
 objectNotes text,
-FOREIGN KEY (objectType) REFERENCES objectType(objectType),
+FOREIGN KEY (objectType) REFERENCES codeType(codeTypeID),
 FOREIGN KEY (objectConstellation) REFERENCES constellation(constellationID)
 );
 
 
 
--- objectType 
-CREATE TABLE objectType (
-objectType text NOT NULL PRIMARY KEY,
-objectTypeDescription text,
-objectTypeNotes text
+-- codeType 
+CREATE TABLE codeType (
+codeTypeID text NOT NULL PRIMARY KEY,
+codeTypeDescription text,
+codeTypeNotes text
 );
-INSERT INTO objectType VALUES('AS','Asteroid','https://en.wikipedia.org/wiki/Asteroid');
-INSERT INTO objectType VALUES('CO','Comet','https://en.wikipedia.org/wiki/Comet');
-INSERT INTO objectType VALUES('DP','Dwarf planet','https://en.wikipedia.org/wiki/Dwarf_planet');
-INSERT INTO objectType VALUES('GC','Globular cluster','https://en.wikipedia.org/wiki/Globular_cluster');
-INSERT INTO objectType VALUES('GX','Galaxy','https://en.wikipedia.org/wiki/Galaxy');
-INSERT INTO objectType VALUES('MT','Meteor','https://en.wikipedia.org/wiki/Meteoroid');
-INSERT INTO objectType VALUES('NB','Nebula','https://en.wikipedia.org/wiki/Nebula');
-INSERT INTO objectType VALUES('NS','Natural satellite','https://en.wikipedia.org/wiki/Natural_satellite');
-INSERT INTO objectType VALUES('OC','Open cluster','https://en.wikipedia.org/wiki/Open_cluster');
-INSERT INTO objectType VALUES('PL','Planet','https://en.wikipedia.org/wiki/Planet');
-INSERT INTO objectType VALUES('SC','Star cloud','https://en.wikipedia.org/wiki/Star_cluster');
-INSERT INTO objectType VALUES('ST','Star','https://en.wikipedia.org/wiki/Star');
+INSERT INTO codeType VALUES('AS','Asteroid','https://en.wikipedia.org/wiki/Asteroid');
+INSERT INTO codeType VALUES('CO','Comet','https://en.wikipedia.org/wiki/Comet');
+INSERT INTO codeType VALUES('DP','Dwarf planet','https://en.wikipedia.org/wiki/Dwarf_planet');
+INSERT INTO codeType VALUES('GC','Globular cluster','https://en.wikipedia.org/wiki/Globular_cluster');
+INSERT INTO codeType VALUES('GX','Galaxy','https://en.wikipedia.org/wiki/Galaxy');
+INSERT INTO codeType VALUES('MT','Meteor','https://en.wikipedia.org/wiki/Meteoroid');
+INSERT INTO codeType VALUES('NB','Nebula','https://en.wikipedia.org/wiki/Nebula');
+INSERT INTO codeType VALUES('NS','Natural satellite','https://en.wikipedia.org/wiki/Natural_satellite');
+INSERT INTO codeType VALUES('OC','Open cluster','https://en.wikipedia.org/wiki/Open_cluster');
+INSERT INTO codeType VALUES('PL','Planet','https://en.wikipedia.org/wiki/Planet');
+INSERT INTO codeType VALUES('SC','Star cloud','https://en.wikipedia.org/wiki/Star_cluster');
+INSERT INTO codeType VALUES('ST','Star','https://en.wikipedia.org/wiki/Star');
 
 
 
